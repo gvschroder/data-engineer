@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  jupyter:
+    image: jupyter/all-spark-notebook:latest
+    container_name: jupyter
+    volumes:
+      - ./examples:/home/jovyan/work
+      - $HOME/.aws/credentials:/home/jovyan/.aws/credentials:ro
+      - $HOME/.aws/config:/home/jovyan/.aws/config:ro
+    environment:
+      - GRANT_SUDO=yes
+    ports:
+      - "8888:8888"
